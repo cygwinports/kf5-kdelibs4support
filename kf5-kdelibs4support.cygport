@@ -28,7 +28,7 @@ libKF5KDELibs4Support5_CONTENTS="
 	usr/share/locale/
 	usr/share/man/
 "
-libKF5KDELibs4Support_devel_REQUIRES="libKF5Archive-devel libKF5Bookmarks-devel libKF5GlobalAccel-devel libKF5I18n-devel libKF5IconThemes-devel libKF5JS-devel libKF5KIO-devel libKF5Notifications-devel libKF5Parts-devel libKF5Sonnet-devel libKF5Wallet-devel libKF5WidgetsAddons-devel libKF5WindowSystem-devel libQt5Core-devel libphonon4qt5-devel libQt5Gui-devel libQt5X11Extras-devel"
+libKF5KDELibs4Support_devel_REQUIRES="libKF5Completion-devel libKF5Config-devel libKF5ConfigWidgets-devel libKF5CoreAddons-devel libKF5Crash-devel libKF5GlobalAccel-devel libKF5GuiAddons-devel libKF5I18n-devel libKF5IconThemes-devel libKF5KIO-devel libKF5Notifications-devel libKF5Parts-devel libKF5TextWidgets-devel libKF5UnitConversion-devel libKF5WidgetsAddons-devel libKF5WindowSystem-devel libQt5Core-devel libQt5Gui-devel libQt5Svg-devel libQt5X11Extras-devel"
 libKF5KDELibs4Support_devel_CONTENTS="
 	usr/include/KF5/KDELibs4Support/
 	usr/include/KF5/kdelibs4support_version.h
