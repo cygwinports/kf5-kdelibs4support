@@ -1,0 +1,50 @@
+inherit kf5
+
+NAME="kf5-kdelibs4support"
+VERSION=5.10.0
+RELEASE=1
+CATEGORY="Libs"
+SUMMARY="KDE 4.x compatibility library for KDE 5"
+DESCRIPTION="This framework provides code and utilities to ease the transition
+from kdelibs 4 to KDE Frameworks 5.  This includes CMake macros and C++ classes
+whose functionality has been replaced by code in CMake, Qt and other frameworks."
+
+SRC_URI="mirror://kde/stable/frameworks/${VERSION%\.*}/portingAids/${NAME#kf5-}-${VERSION}.tar.xz"
+PATCH_URI="5.10.0-openssl-cygwin.patch"
+
+PKG_NAMES="libKF5KDELibs4Support5 libKF5KDELibs4Support-devel"
+libKF5KDELibs4Support5_REQUIRES="ca-certificates libopenssl100"
+libKF5KDELibs4Support5_CONTENTS="
+	etc/
+	usr/bin/cygKF5KDELibs4Support-5.dll
+	usr/bin/kdebugdialog5.exe
+	usr/bin/kf5-config.exe
+	${QT5_PLUGINSDIR#/}/
+	usr/libexec/kf5/fileshareset
+	usr/share/doc/
+	usr/share/kf5/
+	usr/share/kservices5/
+	usr/share/kservicetypes5/
+	usr/share/locale/
+	usr/share/man/
+"
+libKF5KDELibs4Support_devel_REQUIRES="libKF5Archive-devel libKF5Bookmarks-devel libKF5GlobalAccel-devel libKF5I18n-devel libKF5IconThemes-devel libKF5JS-devel libKF5KIO-devel libKF5Notifications-devel libKF5Parts-devel libKF5Sonnet-devel libKF5Wallet-devel libKF5WidgetsAddons-devel libKF5WindowSystem-devel libQt5Core-devel libphonon4qt5-devel libQt5Gui-devel libQt5X11Extras-devel"
+libKF5KDELibs4Support_devel_CONTENTS="
+	usr/include/KF5/KDELibs4Support/
+	usr/include/KF5/kdelibs4support_version.h
+	usr/lib/cmake/KDELibs4/
+	usr/lib/cmake/KF5KDE4Support/
+	usr/lib/cmake/KF5KDELibs4Support/
+	usr/lib/libKF5KDELibs4Support.dll.a
+	usr/share/dbus-1/interfaces/
+"
+
+src_install() {
+	cd ${B}
+	kf5_install
+
+	make_etc_defaults /etc/xdg
+
+	rm -f ${D}/usr/share/kf5/kssl/ca-bundle.crt
+	dosym /etc/pki/tls/certs/ca-bundle.crt /usr/share/kf5/kssl/ca-bundle.crt
+}
