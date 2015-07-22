@@ -10,7 +10,10 @@ from kdelibs 4 to KDE Frameworks 5.  This includes CMake macros and C++ classes
 whose functionality has been replaced by code in CMake, Qt and other frameworks."
 
 SRC_URI="mirror://kde/stable/frameworks/${VERSION%\.*}/portingAids/${NAME#kf5-}-${VERSION}.tar.xz"
-PATCH_URI="5.10.0-openssl-cygwin.patch"
+PATCH_URI="
+	5.10.0-openssl-cygwin.patch
+	5.12.0-kstandarddirs-cygwin.patch
+"
 
 PKG_NAMES="libKF5KDELibs4Support5 libKF5KDELibs4Support-devel"
 libKF5KDELibs4Support5_REQUIRES="ca-certificates libopenssl100"
